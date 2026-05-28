@@ -20,6 +20,7 @@ The deploy workflow uses GitHub Actions. For the first deploy, either enable Pag
 - `assets/decks/discreet-voice-mode-prd.pdf`
 - `assets/decks/chatgpt-voice-adoption-research.pdf`
 - `assets/decks/fire-alarm-deaf-users.pdf`
+- `assets/decks/zepto.pdf`
 - `assets/shivam.webp`
 - `assets/thumbs/`
 - `assets/screenshots/`

@@ -5,12 +5,12 @@
   --ink: oklch(0.94 0.018 92);
   --ink-soft: oklch(0.79 0.026 92);
   --muted: oklch(0.64 0.035 88);
-  --panel: oklch(0.095 0.01 88);
-  --panel-strong: oklch(0.13 0.012 88);
+  --panel: oklch(0.095 0.01 88 / 0.82);
+  --panel-strong: oklch(0.13 0.012 88 / 0.86);
   --line: oklch(0.84 0.12 92 / 0.08);
   --line-strong: oklch(0.84 0.12 92 / 0.18);
-  --dark: oklch(0.055 0.006 88);
-  --dark-2: oklch(0.085 0.008 88);
+  --dark: oklch(0.055 0.006 88 / 0.84);
+  --dark-2: oklch(0.085 0.008 88 / 0.86);
   --paper: oklch(0.96 0.025 92);
   --accent: oklch(0.88 0.2 101);
   --accent-2: oklch(0.95 0.16 103);
@@ -318,7 +318,7 @@ nav a:hover {
 
 .portrait-card figcaption {
   position: absolute;
-  top: 18px;
+  bottom: 34px;
   left: 50%;
   z-index: 2;
   width: max-content;
@@ -375,7 +375,7 @@ nav a:hover {
 
 .proof-bar {
   border-block: 0;
-  background: var(--dark);
+  background: transparent;
   color: var(--paper);
 }
 
@@ -410,11 +410,60 @@ nav a:hover {
   color: oklch(0.88 0.035 92);
 }
 
+.caution-ribbon {
+  position: relative;
+  height: 92px;
+  overflow: hidden;
+  margin: 14px 0 4px;
+  background: transparent;
+}
+
+.caution-ribbon::before,
+.caution-ribbon::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: oklch(0.88 0.2 101 / 0.22);
+}
+
+.caution-ribbon::before {
+  top: 15px;
+}
+
+.caution-ribbon::after {
+  bottom: 15px;
+}
+
+.caution-ribbon-track {
+  position: absolute;
+  top: 50%;
+  left: -8vw;
+  width: 116vw;
+  height: 88px;
+  border-block: 1px solid oklch(0.96 0.16 104 / 0.5);
+  background:
+    linear-gradient(180deg, oklch(0.98 0.18 104 / 0.28), transparent 46%, oklch(0.04 0.006 88 / 0.18)),
+    repeating-linear-gradient(
+      132deg,
+      var(--accent) 0 54px,
+      oklch(0.99 0.16 104) 54px 70px,
+      oklch(0.045 0.006 88) 70px 126px,
+      oklch(0.16 0.01 88) 126px 142px
+    );
+  box-shadow:
+    0 10px 26px oklch(0.025 0.006 88 / 0.62),
+    inset 0 10px 18px oklch(1 0 0 / 0.18),
+    inset 0 -10px 18px oklch(0.02 0.006 88 / 0.28);
+  transform: translateY(-50%) rotate(-1deg);
+}
+
 .hook-board {
   display: grid;
   grid-template-columns: 1.24fr 0.76fr;
   gap: 16px;
-  padding-top: 76px;
+  padding-top: 48px;
 }
 
 .hook-card {
@@ -481,25 +530,51 @@ nav a:hover {
 }
 
 .work-card {
+  position: relative;
   min-width: 0;
   grid-column: span 6;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: var(--panel);
+  background:
+    linear-gradient(90deg, oklch(0.88 0.2 101 / 0.038) 1px, transparent 1px),
+    linear-gradient(180deg, oklch(0.88 0.2 101 / 0.03) 1px, transparent 1px),
+    var(--panel);
+  background-size: 34px 34px, 34px 34px, auto;
   color: var(--paper);
+  transition: border-color 220ms ease, transform 220ms ease, background 220ms ease;
+}
+
+.work-card[data-card-link] {
+  cursor: pointer;
+}
+
+.work-card:focus-visible,
+.artifact-card:focus-visible,
+.story-card:focus-visible,
+.deck-card:focus-visible,
+.repo-list a:focus-visible,
+.button:focus-visible,
+.link-row a:focus-visible,
+.carousel-controls button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .work-card-large,
 .work-card-wide {
   grid-column: span 12;
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(360px, 0.85fr);
+  grid-template-columns: minmax(0, 600px) minmax(0, 1fr);
   align-items: stretch;
 }
 
 .work-card-large {
-  background: var(--panel-strong);
+  background:
+    linear-gradient(90deg, oklch(0.88 0.2 101 / 0.042) 1px, transparent 1px),
+    linear-gradient(180deg, oklch(0.88 0.2 101 / 0.034) 1px, transparent 1px),
+    var(--panel-strong);
+  background-size: 34px 34px, 34px 34px, auto;
 }
 
 .work-card-wide {
@@ -508,14 +583,26 @@ nav a:hover {
 
 .work-media {
   display: block;
+  min-width: 0;
   min-height: 270px;
+  overflow: hidden;
   background: var(--dark);
   text-decoration: none;
 }
 
-.work-card-large .work-media,
+.work-card-large .work-media {
+  align-self: center;
+  justify-self: center;
+  width: min(100% - 32px, 600px);
+  min-height: 0;
+  margin-left: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  aspect-ratio: 16 / 9;
+}
+
 .work-card-wide .work-media {
-  min-height: 520px;
+  min-height: 460px;
 }
 
 .work-media img {
@@ -523,20 +610,23 @@ nav a:hover {
   height: 100%;
   object-fit: cover;
   object-position: top center;
+  transition: transform 360ms ease, opacity 220ms ease;
 }
 
 .work-media video {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
+  transition: transform 360ms ease;
 }
 
 .work-copy {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 26px;
+  gap: 14px;
+  padding: 24px;
 }
 
 .work-copy p:not(.pill) {
@@ -563,6 +653,7 @@ nav a:hover {
 .work-copy dd {
   margin: 5px 0 0;
   color: oklch(0.75 0.04 92);
+  font-size: 0.95rem;
 }
 
 .link-row {
@@ -583,8 +674,39 @@ nav a:hover {
 
 .link-row a:hover,
 .repo-list a:hover,
-.deck-card:hover {
+.deck-card:hover,
+.work-card:hover,
+.artifact-card:hover,
+.story-card:hover {
   border-color: var(--accent);
+}
+
+.repo-list a:hover,
+.deck-card:hover,
+.work-card:hover,
+.artifact-card:hover,
+.story-card:hover {
+  transform: translateY(-5px);
+}
+
+.work-card:hover {
+  background:
+    linear-gradient(90deg, oklch(0.88 0.2 101 / 0.064) 1px, transparent 1px),
+    linear-gradient(180deg, oklch(0.88 0.2 101 / 0.05) 1px, transparent 1px),
+    oklch(0.12 0.012 88 / 0.86);
+  background-size: 34px 34px, 34px 34px, auto;
+}
+
+.work-card:hover .work-media img,
+.work-card:hover .work-media video {
+  transform: scale(1.025);
+}
+
+.link-row a:hover,
+.repo-list a:hover,
+.deck-card:hover,
+.artifact-card:hover,
+.story-card:hover {
   background: oklch(0.88 0.2 101 / 0.12);
 }
 
@@ -640,6 +762,7 @@ nav a:hover {
 }
 
 .artifact-card {
+  display: block;
   position: relative;
   min-width: 0;
   min-height: 355px;
@@ -653,7 +776,9 @@ nav a:hover {
     var(--panel);
   background-size: 28px 28px, 28px 28px, auto;
   color: var(--paper);
+  text-decoration: none;
   scroll-snap-align: start;
+  transition: border-color 180ms ease, transform 180ms ease;
 }
 
 .artifact-card::after {
@@ -671,7 +796,8 @@ nav a:hover {
 .artifact-card span,
 .artifact-card h3,
 .artifact-card p,
-.artifact-card a {
+.artifact-card a,
+.artifact-card strong {
   position: relative;
   z-index: 1;
 }
@@ -688,7 +814,8 @@ nav a:hover {
   color: oklch(0.88 0.035 92);
 }
 
-.artifact-card a {
+.artifact-card a,
+.artifact-card .card-link {
   display: inline-flex;
   margin-top: 24px;
   color: var(--paper);
@@ -738,23 +865,46 @@ nav a:hover {
   padding: 28px;
   border: 1px solid var(--line-strong);
   border-radius: var(--radius);
-  background: var(--panel);
+  background:
+    linear-gradient(90deg, oklch(0.88 0.2 101 / 0.04) 1px, transparent 1px),
+    linear-gradient(180deg, oklch(0.88 0.2 101 / 0.032) 1px, transparent 1px),
+    var(--panel);
+  background-size: 36px 36px, 36px 36px, auto;
   color: var(--paper);
   box-shadow: var(--shadow);
+  text-decoration: none;
+  transition: border-color 180ms ease, transform 180ms ease;
 }
 
 .story-card:nth-child(2) {
   top: 108px;
-  background: var(--panel-strong);
+  background:
+    linear-gradient(90deg, oklch(0.88 0.2 101 / 0.044) 1px, transparent 1px),
+    linear-gradient(180deg, oklch(0.88 0.2 101 / 0.034) 1px, transparent 1px),
+    var(--panel-strong);
+  background-size: 36px 36px, 36px 36px, auto;
 }
 
 .story-card:nth-child(3) {
   top: 128px;
-  background: var(--dark-2);
+  background:
+    linear-gradient(90deg, oklch(0.88 0.2 101 / 0.046) 1px, transparent 1px),
+    linear-gradient(180deg, oklch(0.88 0.2 101 / 0.036) 1px, transparent 1px),
+    var(--dark-2);
+  background-size: 36px 36px, 36px 36px, auto;
 }
 
 .story-card:nth-child(4) {
   top: 148px;
+}
+
+.story-card:nth-child(5) {
+  top: 168px;
+  background:
+    linear-gradient(90deg, oklch(0.88 0.2 101 / 0.05) 1px, transparent 1px),
+    linear-gradient(180deg, oklch(0.88 0.2 101 / 0.038) 1px, transparent 1px),
+    var(--panel);
+  background-size: 36px 36px, 36px 36px, auto;
 }
 
 .story-card span {
@@ -784,6 +934,7 @@ nav a:hover {
   border-radius: var(--radius-sm);
   object-fit: cover;
   object-position: top center;
+  transition: transform 360ms ease, opacity 220ms ease;
 }
 
 .deck-grid {
@@ -797,9 +948,14 @@ nav a:hover {
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: var(--panel);
+  background:
+    linear-gradient(90deg, oklch(0.88 0.2 101 / 0.034) 1px, transparent 1px),
+    linear-gradient(180deg, oklch(0.88 0.2 101 / 0.026) 1px, transparent 1px),
+    var(--panel);
+  background-size: 32px 32px, 32px 32px, auto;
   color: var(--paper);
   text-decoration: none;
+  transition: border-color 180ms ease, transform 180ms ease;
 }
 
 .deck-card-tall {
@@ -812,6 +968,12 @@ nav a:hover {
   object-fit: cover;
   object-position: top center;
   border-bottom: 1px solid var(--line);
+  transition: transform 360ms ease, opacity 220ms ease;
+}
+
+.deck-card:hover img,
+.story-card:hover img {
+  transform: scale(1.025);
 }
 
 .deck-card-tall img {
@@ -837,7 +999,7 @@ nav a:hover {
 .research-section {
   margin-top: 92px;
   padding: 80px 0;
-  background: var(--dark);
+  background: transparent;
   color: var(--paper);
 }
 
@@ -900,6 +1062,7 @@ nav a:hover {
   background: var(--panel);
   color: var(--paper);
   text-decoration: none;
+  transition: border-color 180ms ease, transform 180ms ease, background 180ms ease;
 }
 
 .repo-list span,
@@ -1032,6 +1195,55 @@ nav a:hover {
 .site-footer a {
   font-weight: 850;
   text-decoration: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .evidence-card-top {
+    animation: soft-drift-left 8s ease-in-out 900ms infinite;
+  }
+
+  .evidence-card-bottom {
+    animation: soft-drift-right 9s ease-in-out 1100ms infinite;
+  }
+
+  @supports (animation-timeline: view()) {
+    .story-card img {
+      animation: story-image-drift linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 55%;
+    }
+  }
+}
+
+@keyframes soft-drift-left {
+  0%,
+  100% {
+    transform: rotate(-4deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(-2deg) translate3d(10px, -10px, 0);
+  }
+}
+
+@keyframes soft-drift-right {
+  0%,
+  100% {
+    transform: rotate(3deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(1deg) translate3d(-8px, 12px, 0);
+  }
+}
+
+@keyframes story-image-drift {
+  from {
+    opacity: 0.78;
+    transform: scale(0.96) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1178,12 +1390,27 @@ nav a:hover {
     transform: none;
   }
 
+  .portrait-card {
+    position: relative;
+  }
+
   .evidence-card img {
     height: 220px;
   }
 
   .scroll-story {
     padding-top: 64px;
+  }
+
+  .caution-ribbon {
+    height: 82px;
+    margin: 10px 0 0;
+  }
+
+  .caution-ribbon-track {
+    height: 78px;
+    left: -22vw;
+    width: 144vw;
   }
 
   .story-card {
@@ -1215,7 +1442,9 @@ nav a:hover {
 
   .work-card-large .work-media,
   .work-card-wide .work-media {
+    width: 100%;
     min-height: 320px;
+    margin-left: 0;
   }
 
   .deck-card-tall {

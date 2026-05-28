@@ -90,3 +90,19 @@ document.querySelectorAll("[data-wheel-carousel]").forEach(track => {
     { passive: false }
   );
 });
+
+document.querySelectorAll("[data-card-link]").forEach(card => {
+  card.addEventListener("click", event => {
+    if (event.target.closest("a, button")) return;
+
+    window.open(card.dataset.cardLink, "_blank", "noopener");
+  });
+
+  card.addEventListener("keydown", event => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    if (event.target.closest("a, button")) return;
+
+    event.preventDefault();
+    window.open(card.dataset.cardLink, "_blank", "noopener");
+  });
+});
