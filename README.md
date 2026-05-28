@@ -23,3 +23,4 @@ The deploy workflow uses GitHub Actions. For the first deploy, either enable Pag
 - `assets/shivam.webp`
 - `assets/thumbs/`
 - `assets/screenshots/`
+- `assets/videos/linkedin-video.mp4`

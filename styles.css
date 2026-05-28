@@ -12,9 +12,9 @@
   --dark: oklch(0.055 0.006 88);
   --dark-2: oklch(0.085 0.008 88);
   --paper: oklch(0.96 0.025 92);
-  --accent: oklch(0.84 0.18 92);
-  --accent-2: oklch(0.93 0.12 95);
-  --accent-soft: oklch(0.84 0.18 92 / 0.14);
+  --accent: oklch(0.88 0.2 101);
+  --accent-2: oklch(0.95 0.16 103);
+  --accent-soft: oklch(0.88 0.2 101 / 0.14);
   --shadow: 0 28px 90px oklch(0.025 0.006 88 / 0.72);
   --radius: 18px;
   --radius-sm: 12px;
@@ -38,8 +38,8 @@ html {
 body {
   margin: 0;
   background:
-    linear-gradient(90deg, oklch(0.84 0.18 92 / 0.035) 1px, transparent 1px),
-    linear-gradient(180deg, oklch(0.84 0.18 92 / 0.026) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.88 0.2 101 / 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, oklch(0.88 0.2 101 / 0.026) 1px, transparent 1px),
     var(--bg);
   background-attachment: fixed;
   background-size: 44px 44px, 44px 44px, auto;
@@ -99,33 +99,7 @@ h1 {
 .hero h1,
 .proof-grid strong {
   color: var(--accent);
-  animation: gold-shine 3.8s ease-in-out infinite;
-  text-shadow:
-    0 0 16px oklch(0.84 0.18 92 / 0.2),
-    0 0 46px oklch(0.84 0.18 92 / 0.14);
-}
-
-@keyframes gold-shine {
-  0% {
-    color: oklch(0.78 0.18 88);
-    text-shadow:
-      0 0 10px oklch(0.84 0.18 92 / 0.16),
-      0 0 28px oklch(0.84 0.18 92 / 0.1);
-  }
-
-  50% {
-    color: oklch(0.95 0.11 96);
-    text-shadow:
-      0 0 20px oklch(0.93 0.12 95 / 0.42),
-      0 0 62px oklch(0.84 0.18 92 / 0.22);
-  }
-
-  100% {
-    color: oklch(0.78 0.18 88);
-    text-shadow:
-      0 0 10px oklch(0.84 0.18 92 / 0.16),
-      0 0 28px oklch(0.84 0.18 92 / 0.1);
-  }
+  text-shadow: none;
 }
 
 h2 {
@@ -325,20 +299,32 @@ nav a:hover {
   right: 4%;
   top: 8%;
   z-index: 3;
-  width: min(330px, 72vw);
+  width: min(360px, 72vw);
+  aspect-ratio: 1;
+  border-radius: 999px;
 }
 
 .portrait-card img {
   width: 100%;
-  height: 410px;
+  height: 100%;
   object-fit: cover;
   object-position: center top;
 }
 
-.portrait-card figcaption,
 .evidence-card figcaption {
   padding: 14px 16px;
   background: var(--dark-2);
+}
+
+.portrait-card figcaption {
+  position: absolute;
+  right: 28px;
+  bottom: 24px;
+  left: 28px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: oklch(0.045 0.006 88 / 0.84);
 }
 
 .portrait-card span,
@@ -348,14 +334,15 @@ nav a:hover {
 
 .portrait-card span,
 .evidence-card figcaption {
-  color: oklch(0.84 0.18 92);
+  color: var(--accent);
   font-size: 0.85rem;
   font-weight: 750;
 }
 
 .portrait-card strong {
   margin-top: 2px;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
+  line-height: 1.18;
 }
 
 .evidence-card {
@@ -528,7 +515,8 @@ nav a:hover {
   min-height: 520px;
 }
 
-.work-media img {
+.work-media img,
+.work-media video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -589,7 +577,7 @@ nav a:hover {
 .repo-list a:hover,
 .deck-card:hover {
   border-color: var(--accent);
-  background: oklch(0.84 0.18 92 / 0.12);
+  background: oklch(0.88 0.2 101 / 0.12);
 }
 
 .artifact-section {
@@ -652,8 +640,8 @@ nav a:hover {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background:
-    linear-gradient(90deg, oklch(0.84 0.18 92 / 0.055) 1px, transparent 1px),
-    linear-gradient(180deg, oklch(0.84 0.18 92 / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.88 0.2 101 / 0.055) 1px, transparent 1px),
+    linear-gradient(180deg, oklch(0.88 0.2 101 / 0.04) 1px, transparent 1px),
     var(--panel);
   background-size: 28px 28px, 28px 28px, auto;
   color: var(--paper);
@@ -667,9 +655,9 @@ nav a:hover {
   bottom: -54px;
   width: 170px;
   height: 170px;
-  border: 1px solid oklch(0.84 0.18 92 / 0.22);
+  border: 1px solid oklch(0.88 0.2 101 / 0.22);
   border-radius: 999px;
-  background: oklch(0.84 0.18 92 / 0.055);
+  background: oklch(0.88 0.2 101 / 0.055);
 }
 
 .artifact-card span,
@@ -701,16 +689,16 @@ nav a:hover {
 
 .artifact-primary {
   background:
-    linear-gradient(90deg, oklch(0.84 0.18 92 / 0.07) 1px, transparent 1px),
-    linear-gradient(180deg, oklch(0.84 0.18 92 / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.88 0.2 101 / 0.07) 1px, transparent 1px),
+    linear-gradient(180deg, oklch(0.88 0.2 101 / 0.05) 1px, transparent 1px),
     var(--panel-strong);
   background-size: 26px 26px, 26px 26px, auto;
 }
 
 .artifact-dark {
   background:
-    linear-gradient(90deg, oklch(0.84 0.18 92 / 0.05) 1px, transparent 1px),
-    linear-gradient(180deg, oklch(0.84 0.18 92 / 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.88 0.2 101 / 0.05) 1px, transparent 1px),
+    linear-gradient(180deg, oklch(0.88 0.2 101 / 0.035) 1px, transparent 1px),
     var(--dark);
   background-size: 30px 30px, 30px 30px, auto;
   color: var(--paper);

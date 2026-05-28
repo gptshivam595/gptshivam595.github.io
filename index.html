@@ -50,7 +50,7 @@
 
           <div class="hero-stage" aria-label="Portfolio preview" data-reveal>
             <figure class="portrait-card">
-              <img src="assets/shivam.webp" width="896" height="1200" alt="Portrait of Shivam Kumar Gupta">
+              <img src="assets/shivam.webp" width="1254" height="1254" alt="Portrait of Shivam Kumar Gupta">
               <figcaption>
                 <span>Shivam Kumar Gupta</span>
                 <strong>Product thinker with technical depth</strong>
@@ -117,48 +117,36 @@
 
         <div class="featured-work">
           <article class="work-card work-card-large">
-            <a class="work-media" href="https://chat-gpt-india.vercel.app/" target="_blank" rel="noopener">
-              <img src="assets/screenshots/chatgpt-india.png" alt="ChatGPT India voice prototype screenshot">
-            </a>
-            <div class="work-copy">
-              <p class="pill">Voice UX / PM case / Prototype</p>
-              <h3>Discreet Voice Mode for ChatGPT</h3>
-              <p>
-                Designed a private, controlled voice input experience for Indian students using ChatGPT in hostels, libraries, classrooms, and shared spaces.
-              </p>
-              <dl>
-                <div>
-                  <dt>Problem</dt>
-                  <dd>Students know voice exists but default to typing because speaking aloud feels awkward and risky.</dd>
-                </div>
-                <div>
-                  <dt>Solution</dt>
-                  <dd>Push-to-talk, live transcription, editable drafts, privacy cues, incognito mode, and noise suppression.</dd>
-                </div>
-                <div>
-                  <dt>Metrics</dt>
-                  <dd>Weekly active voice users, 7-day voice retention, task completion, CSAT, accuracy, latency, and cut-off rate.</dd>
-                </div>
-              </dl>
-              <div class="link-row">
-                <a href="https://chat-gpt-india.vercel.app/" target="_blank" rel="noopener">Live prototype</a>
-                <a href="https://github.com/gptshivam595/ChatGPT-India" target="_blank" rel="noopener">GitHub</a>
-                <a href="assets/decks/discreet-voice-mode-prd.pdf" target="_blank" rel="noopener">PRD</a>
-                <a href="assets/decks/chatgpt-voice-adoption-research.pdf" target="_blank" rel="noopener">Research</a>
-              </div>
+            <div class="work-media">
+              <video controls playsinline preload="metadata" poster="assets/screenshots/mutual-fund-rag.png">
+                <source src="assets/videos/linkedin-video.mp4" type="video/mp4">
+                Facts-only Mutual Fund FAQ Assistant walkthrough.
+              </video>
             </div>
-          </article>
-
-          <article class="work-card">
-            <a class="work-media" href="https://faq-mutual-fund-rag-chat-bot.vercel.app/" target="_blank" rel="noopener">
-              <img src="assets/screenshots/mutual-fund-rag.png" alt="Mutual fund FAQ RAG chatbot screenshot">
-            </a>
             <div class="work-copy">
               <p class="pill">RAG / Fintech / Trust</p>
               <h3>Facts-only Mutual Fund FAQ Assistant</h3>
               <p>
-                Built a retrieval-first assistant bounded by official AMC, AMFI, and SEBI-style source discipline, with refusals for advice and PII.
+                Built a high-trust, low-risk fintech assistant that answers only factual mutual fund questions using official source discipline.
               </p>
+              <dl>
+                <div>
+                  <dt>Problem</dt>
+                  <dd>Mutual fund FAQ chat can become risky if it gives advice, guesses, or handles sensitive user data.</dd>
+                </div>
+                <div>
+                  <dt>Constraints</dt>
+                  <dd>Use official AMC, AMFI, and SEBI-style sources, include links, refuse advice, avoid PII, and keep answers short.</dd>
+                </div>
+                <div>
+                  <dt>System</dt>
+                  <dd>React/Vite frontend, FastAPI backend, policy gate, structured fact lookup, retrieval layer, and grounded response flow.</dd>
+                </div>
+                <div>
+                  <dt>Product decision</dt>
+                  <dd>Narrow official corpus, structured fact store, hard refusals for returns or comparisons, and guardrails for PAN, Aadhaar, folio, OTP, phone, and email.</dd>
+                </div>
+              </dl>
               <div class="link-row">
                 <a href="https://faq-mutual-fund-rag-chat-bot.vercel.app/" target="_blank" rel="noopener">Live demo</a>
                 <a href="https://github.com/gptshivam595/FAQ_MutualFund_RAG_ChatBot" target="_blank" rel="noopener">GitHub</a>
