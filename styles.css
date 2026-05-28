@@ -233,6 +233,24 @@ nav a:hover {
   line-height: 1.45;
 }
 
+.hero-credentials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 680px;
+  margin-top: 22px;
+}
+
+.hero-credentials span {
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: oklch(0.88 0.2 101 / 0.09);
+  color: var(--paper);
+  font-size: 0.86rem;
+  font-weight: 800;
+  padding: 8px 11px;
+}
+
 .hero-actions,
 .contact-actions,
 .link-row {
@@ -1017,10 +1035,55 @@ nav a:hover {
   font-size: 1.08rem;
 }
 
+.publication-link {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  margin-top: 24px;
+  padding: 8px 13px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--paper);
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.publication-link:hover {
+  border-color: var(--accent);
+  background: oklch(0.88 0.2 101 / 0.12);
+}
+
 .research-panel {
-  border: 1px solid oklch(0.82 0.02 142 / 0.2);
+  overflow: hidden;
+  border: 1px solid oklch(0.88 0.2 101 / 0.18);
   border-radius: var(--radius);
-  background: oklch(0.94 0.01 142 / 0.06);
+  background:
+    linear-gradient(90deg, oklch(0.88 0.2 101 / 0.04) 1px, transparent 1px),
+    linear-gradient(180deg, oklch(0.88 0.2 101 / 0.032) 1px, transparent 1px),
+    oklch(0.075 0.008 88 / 0.84);
+  background-size: 34px 34px, 34px 34px, auto;
+}
+
+.publication-card {
+  padding: 24px;
+  border-bottom: 1px solid oklch(0.88 0.2 101 / 0.16);
+}
+
+.publication-card span {
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.publication-card h3 {
+  max-width: 620px;
+  margin-top: 12px;
+  line-height: 1.08;
+}
+
+.publication-card p {
+  margin-top: 14px;
+  color: oklch(0.86 0.03 92);
 }
 
 .research-panel dl {
