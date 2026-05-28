@@ -1,6 +1,6 @@
 # Shivam Kumar Gupta Portfolio
 
-Static GitHub Pages portfolio for Shivam Kumar Gupta.
+GitHub Pages portfolio for Shivam Kumar Gupta.
 
 ## Local Preview
 
