@@ -16,7 +16,7 @@ The deploy workflow uses GitHub Actions. For the first deploy, either enable Pag
 
 ## Assets
 
-- `assets/Product_Shivam_Resume.pdf`
+- `https://drive.google.com/file/d/1BG8fVuvoFxpcUi9ofPiS-ET17uUuY3ud/view?usp=sharing`
 - `assets/decks/discreet-voice-mode-prd.pdf`
 - `assets/decks/chatgpt-voice-adoption-research.pdf`
 - `assets/decks/fire-alarm-deaf-users.pdf`
